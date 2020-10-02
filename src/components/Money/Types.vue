@@ -13,14 +13,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
-import {mount} from '@vue/test-utils';
-
+import {Component} from 'vue-property-decorator';
 @Component
 export default class Types extends Vue {
 
   type = '-';
-  @Prop(Number) xxx: number | undefined;
+
 
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
@@ -28,11 +26,9 @@ export default class Types extends Vue {
     }
     this.type = type;
   }
-
-  mounted() {
-    console.log(this.xxx);
-  }
 }
+
+
 </script>
 
 <style lang="scss" scoped>
