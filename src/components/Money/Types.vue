@@ -13,18 +13,24 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
+import {mount} from '@vue/test-utils';
 
 @Component
 export default class Types extends Vue {
 
   type = '-';
+  @Prop(Number) xxx: number | undefined;
 
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unKnow');
     }
     this.type = type;
+  }
+
+  mounted() {
+    console.log(this.xxx);
   }
 }
 </script>
