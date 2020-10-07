@@ -28,10 +28,10 @@ const routes: Array<RouteConfig> = [
     path: '/statistics',
     component: Statistics
   },
-  // {
-  //   path: '/labels/edit',
-  //   component: EditLabel
-  // },
+  {
+    path: '/labels/edit/:id',
+    component: EditLabel
+  },
   {
     path:'/*',
     component:NotFound
