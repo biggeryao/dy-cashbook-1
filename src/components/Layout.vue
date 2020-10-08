@@ -23,6 +23,5 @@ export default {
 .content {
   overflow: auto;
   flex-grow: 1;
-  background-color: #f2f2f2;
 }
 </style>
