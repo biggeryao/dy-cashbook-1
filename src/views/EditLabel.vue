@@ -25,36 +25,33 @@ import Button from '@/components/Button.vue';
   components: {Button, FormItem}
 })
 export default class EditLabel extends Vue {
-  tag?: {id: string;name: string}=undefined
+  tag?: Tag = undefined;
+
   created() {
-    const id = this.$route.params.id;
-    tagListModel.fetch();
-    const tags = tagListModel.data;
-    const tag = tags.filter(t => t.id === id)[0];
-    if (tag) {
-      this.tag=tag
-    } else {
+    this.tag = window.findTag(this.$route.params.id);
+    if (!this.tag) {
       this.$router.replace('/404');
     }
   }
 
-  updateTag(name: string){
-    if(this.tag){
-      tagListModel.update(this.tag.id,name)
+  updateTag(name: string) {
+    if (this.tag) {
+      window.updateTag(this.data.id, name);
     }
   }
-  remove(){
-    if(this.tag){
-      if(tagListModel.remove(this.tag.id)){
-        this.$router.back()
-      }else {
-        alert('删除失败')
+
+  remove() {
+    if (this.tag) {
+      if (window.remove(this.tag.id)) {
+        this.$router.back();
+      } else {
+        window.alert('删除失败');
       }
     }
   }
 
-  goBack(){
-    this.$router.back()
+  goBack() {
+    this.$router.back();
   }
 }
 </script>
@@ -68,22 +65,27 @@ export default class EditLabel extends Vue {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   > .title {
   }
+
   > .leftIcon {
     width: 24px;
     height: 24px;
   }
+
   > .rightIcon {
     width: 24px;
     height: 24px;
   }
 }
-.form-wrapper{
+
+.form-wrapper {
   background: white;
   margin-top: 8px;
 }
-.button-wrapper{
+
+.button-wrapper {
   text-align: center;
   padding: 16px;
   margin-top: 44-16px;
