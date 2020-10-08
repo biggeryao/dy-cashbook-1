@@ -7,7 +7,7 @@
     </div>
     <div class="form-wrapper">
       <FormItem
-          @update:value="updateTag"  :value="currentTag.name" fired-name="标签名"
+          @update:value="updateTag"  :value="currentTag.name" field-name="标签名"
           placeholder="请输入标签名"
       />
     </div>
@@ -41,7 +41,7 @@ export default class EditLabel extends Vue {
     }
   }
 
-  update(name: string) {
+  updateTag(name: string) {
     if (this.currentTag) {
       this.$store.commit('updateTag', {
         id: this.currentTag.id, name
