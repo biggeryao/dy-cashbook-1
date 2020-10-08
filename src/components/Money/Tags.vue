@@ -25,6 +25,7 @@ import TagHelper from '@/mixins/TagHelper';
 export default class Tags extends mixins(TagHelper) {
 
   selectedTags: string[] = [];
+
   created(){
     this.$store.commit('fetchTags')
   }
